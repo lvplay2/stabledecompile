@@ -1,0 +1,56 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Build
+      run: msbuild PlantsVsZombies.sln
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@main
+      with:
+        name: StableDecompile-Build
+        path: |
+          bin/
+
+  upload:
+    name: Upload artifacts
+    needs: [build]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        repository: probonopd/uploadtool
+
+    - uses: actions/download-artifact@main
+      with:
+       name: StableDecompile-Build
+       path: bin
+
+    - name: Save build as zip
+      run: |
+        zip -r StableDecompile-Build.zip bin/
+
+    - name: Upload Continuous Release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        UPLOAD_KEY: ${{ secrets.UPLOAD_KEY }}
+      run: |
+        ./upload.sh \
+          StableDecompile-Build.zip
+          

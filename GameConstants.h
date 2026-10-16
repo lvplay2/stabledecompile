@@ -81,8 +81,8 @@ const int           STORESCREEN_PAGESTRING_Y = 500;
 #define _HAS_ZOMBATAR
 #define _HAS_UNLOCK
 // Unused or Restored
-//#define _HAS_LEVELSELECTOR 
-//#define _HAS_MORESCREEN
+#define _HAS_LEVELSELECTOR 
+#define _HAS_MORESCREEN
 #endif
 
 #ifdef _DEBUG
@@ -96,20 +96,20 @@ const int           STORESCREEN_PAGESTRING_Y = 500;
 // Unused or Restored
 //#define _HAS_BLOOM_AND_DOOM_CONTENTS
 #define _HAS_EXTENDED_MINIGAMES
-//#define _HAS_UNUSED_ACHIEVEMENTS
+#define _HAS_UNUSED_ACHIEVEMENTS
 
 //Ported from other editions
 #define _MOBILE_MINIGAMES
 #define _DS_MINIGAMES
-//#define _CONSOLE_MINIGAMES
+#define _CONSOLE_MINIGAMES
 #define _REPLANTED_SPEED_CONTROL
 //#define _HAS_NEW_GIGA_ZOMBIES
-//#define _HAS_SCORE_SYSTEM
+#define _HAS_SCORE_SYSTEM
 
 // Quality Of Life
 #define _HAS_HEALTHBAR_TOGGLE
-//#define _ALLOW_SWIPE
-//#define _HAS_GAMESELECTOR_SPOTLIGHT
+#define _ALLOW_SWIPE
+#define _HAS_GAMESELECTOR_SPOTLIGHT
 #define _HAS_ANIMATED_WOOD_SIGN
 #define _HAS_KERNELPULT_BUTTER_IDLE
 
